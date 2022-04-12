@@ -39,10 +39,12 @@ def registration_view(request):
             user.save()
             if form.cleaned_data['is_instructor'] is True:
                 print('*' * 20)
-                permission = Permission.objects.get(name='Can add course')
+                permission1 = Permission.objects.get(name='Can add course')
+                permission2 = Permission.objects.get(name='Can add subject')
                 instructor_group = Group.objects.get(name='instructors')
                 user.groups.add(instructor_group)
-                user.user_permissions.add(permission)
+                user.user_permissions.add(permission1)
+                user.user_permissions.add(permission2)
             else:
                 permission = Permission.objects.get(name='Can view course')
                 students_group = Group.objects.get(name='students')
