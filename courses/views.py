@@ -22,7 +22,7 @@ class CreateCourseView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
 class CreateSubjectView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = models.Subject
-    fields = ('title',)
+    fields = ('title', 'slug')
     template_name = 'courses/add_subject.html'
     permission_required = 'courses.add_subject'
     login_url = reverse_lazy('users:login')
